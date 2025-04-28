@@ -9,7 +9,7 @@ const FinishRide = (props) => {
             rideId:props.ride._id
         },{
             headers:{
-                Authorization:`Bearer ${localStorage.getItem('token')}`
+                Authorization:`Bearer ${localStorage.getItem('captainToken')}`
             }
         })
 

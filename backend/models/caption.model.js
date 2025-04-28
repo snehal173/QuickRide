@@ -70,7 +70,7 @@ const captainSchema=new Schema({
 })
 //creating the token for the user
 captainSchema.methods.generateAuthToken=function(){
-    const token=jwt.sign({_id:this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
+    const token=jwt.sign({_id:this._id},process.env.JWT_SECRET1,{expiresIn:'24h'});
     return token;
 }
 //comparing the normal password with the hashed password

@@ -56,14 +56,14 @@ const CaptainHome = () => {
 
   })
   async function confirmRide(){
-    const token = localStorage.getItem('token');
+   const token = localStorage.getItem('captainToken');
     console.log("while confirming ride",token);
     const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`,{
         rideId:ride?._id,
         captainId:captain?._id
     },{
         headers:{
-            Authorization:`Bearer ${localStorage.getItem('token')}`
+            Authorization:`Bearer ${localStorage.getItem('captainToken')}`
         }
     })
     setRidePopupPanel(false)

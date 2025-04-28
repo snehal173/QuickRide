@@ -4,8 +4,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { CaptainDataContext } from '../context/CaptainContext'
 
+
 const CaptainProtectWrapper = ({children}) => {
-    const token=localStorage.getItem('token')
+    const token=localStorage.getItem('captainToken')
+    console.log("the captain token",token);
     const navigate=useNavigate();
     const {captain,setCaptain}=useContext(CaptainDataContext)
     const [isLoading,setIsLoading]=useState(true)
@@ -48,3 +50,4 @@ const CaptainProtectWrapper = ({children}) => {
 }
 
 export default CaptainProtectWrapper
+

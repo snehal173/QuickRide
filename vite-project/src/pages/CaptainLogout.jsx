@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
 
 const CaptainLogout = () => {
-   const token=localStorage.getItem('token');
+   const token=localStorage.getItem('captainToken');
    const navigate=useNavigate();
    axios.get(`${import.meta.env.VITE_BASE_URL}/captains/logout`,{
     headers:{

@@ -1,13 +1,13 @@
-const captianModel=require('../models/caption.model')
+const captainModel=require('../models/caption.model')
 
-module.exports.createCaptian=async({
+module.exports.createCaptain=async({
     firstname,lastname,email,password,color,plate,capacity,vehicleType
 } )=>{
     if(!firstname || !email || !password || !color || !plate || !capacity || !vehicleType){
-        throw new error('all fields are required')
+        throw new Error('all fields are required')
     }
 
-    const captian= await captianModel.create({
+    const captain= await captainModel.create({
         fullname:{
             firstname:firstname,
             lastname:lastname
@@ -21,7 +21,7 @@ module.exports.createCaptian=async({
             vehicleType:vehicleType
         }
     })
-    return captian;
+    return captain;
 }
 
 

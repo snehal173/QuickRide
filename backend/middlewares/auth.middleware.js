@@ -71,6 +71,7 @@ module.exports.authUser = async (req, res, next) => {
   
 
 module.exports.authCaptain=async(req,res,next)=>{
+    try{
     console.log(req.cookies?.token);
     console.log(req.headers.authorization?.split(' ')[1]);
     const token=req.cookies?.token || req.headers.authorization?.split(' ')[1];
@@ -82,16 +83,17 @@ module.exports.authCaptain=async(req,res,next)=>{
     }
     const isblacklisted=await blacklistTokenModel.findOne({token:token});
     if(isblacklisted){
-        return res.json({
-            message:"captian has loggedout"
+        return res.status(401).json({
+            message:"captian has logged out"
         })
     }
-    try{
+    
         const decode=jwt.verify(token,process.env.JWT_SECRET);
-        console.log(decode);
+        console.log("decoded token",decode);
     const captainid=decode._id;
     console.log(captainid);
-    const captain=await captainModel.findById("680b98abc8b7b0f58d74fcfe");
+   //const captain=await captainModel.findById("680b98abc8b7b0f58d74fcfe");
+    const captain=await captainModel.findById(captainid);
     console.log("the captain is",captain);
     if(!captain){
         return res.status(401).json({
@@ -100,7 +102,7 @@ module.exports.authCaptain=async(req,res,next)=>{
     }
     req.captain=captain;
     
-    return next();
+    next();
 
     }catch(error){
         console.log(error);

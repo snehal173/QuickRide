@@ -14,7 +14,7 @@ export const ConfirmRidePopUp = (props) => {
                 otp:otp
             },
             headers:{
-                Authorization:`Bearer ${localStorage.getItem('token')}`
+                Authorization:`Bearer ${localStorage.getItem('captainToken')}`
             }
         })
         if(response.status===200){

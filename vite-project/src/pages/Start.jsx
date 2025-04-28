@@ -62,7 +62,8 @@ const Start = () => {
        const response=await axios.get(`${import.meta.env.VITE_BASE_URL}/maps/get-suggestions`,{
         params:{input:e.target.value},
         headers:{
-          Authorization:`Bearer ${localStorage.getItem('token')}`
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+
         }
        })
        setPickupSuggestions(response.data)
@@ -77,7 +78,8 @@ const Start = () => {
       const response=await axios.get(`${import.meta.env.VITE_BASE_URL}/maps/get-suggestions`,{
        params:{input:e.target.value},
        headers:{
-         Authorization:`Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+
        }
       })
       setDestinationSuggestions(response.data)
@@ -164,7 +166,8 @@ async function findTrip() {
   const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/rides/get-fare`, {
     params: { pickup, destination },
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${localStorage.getItem('userToken')}`
+
     }
   });
   setFare(response.data)  
@@ -176,7 +179,8 @@ async function createRide(){
       pickup,destination,vehicleType
     },{
       headers:{
-        Authorization:`Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+
       }
     })
     console.log(response)

@@ -26,7 +26,7 @@ module.exports.registerCaptain=async(req,res,next)=>{
     }
 
     const hashedPassword=await captainModel.hashPassword(password);
-    const captain =await captainService.createCaptian({
+    const captain =await captainService.createCaptain({
         
         firstname:firstname,
         lastname:lastname,
@@ -48,6 +48,7 @@ module.exports.registerCaptain=async(req,res,next)=>{
       })
     
     }catch(error){
+        console.log(error);
          return res.status(401).json({
             message:"error while signing up captian"
          })
